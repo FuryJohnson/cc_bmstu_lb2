@@ -1,9 +1,6 @@
 from grammar import fromJSON
 
-"Импортирую грамматику через JSON"
-
-
-g = fromJSON('grammars/2.4.19.json')
+g = fromJSON('grammars/GNF.json')
 
 print(g)
 print(g.isInGNF())

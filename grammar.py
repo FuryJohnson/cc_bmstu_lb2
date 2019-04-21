@@ -6,7 +6,7 @@ import numpy as np
 from matrix import Matrix
 from orderedSet import OrderedSet
 
-@staticmethod
+
 class Grammar:
     """Context-free grammar
     """
@@ -40,7 +40,7 @@ class Grammar:
         return '\n'.join(result)
 
     def eliminateIdentity(self):
-        # Убираю правило типа A -> A
+        # remove rules like A -> A
         updatedProductions = {}
         for lhs, rhs in self.productions.items():
             newRhs = []
@@ -76,7 +76,6 @@ class Grammar:
         for lhs, rhs in updatedProductions.items():
             self.productions[lhs] = rhs
 
-
     def eliminateLeftRecursion(self):
         nt = self.nonterminals
         for i in range(len(nt)):
@@ -96,7 +95,7 @@ class Grammar:
             self.eliminateImmediateLeftRecursion(nt[i])
 
     def toGNF(self):
-        """Конвертирую  to Greibach normal form
+        """Convert grammar to Greibach normal form
         """
         # 1) convert to matrix form: X * H + K,
         # where X is a row vector of nonterminals,
@@ -164,7 +163,7 @@ class Grammar:
                 if not prod[0][1]:
                     return False
         return True
-    @staticmethod
+
     def _toMatrix(self):
         X = []
         H = [[[] for _ in self.nonterminals] for _ in self.nonterminals]
@@ -189,9 +188,6 @@ class Grammar:
 
 
 def fromJSON(filename):
-
-    # Работаю в JSON
-
     with open(filename) as f:
         data = json.load(f)
     nts = data['nonterminals']

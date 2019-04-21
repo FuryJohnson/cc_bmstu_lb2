@@ -1,8 +1,6 @@
 from collections import OrderedDict
 
 
-'''Работаю с конструктором, делаю список'''
-@staticmethod
 class OrderedSet:
     def __init__(self, values):
         self.s = OrderedDict()
@@ -31,7 +29,6 @@ class OrderedSet:
 
     def __next__(self):
         return self.s.next()
-        #next может не обрабатываться
 
     def __eq__(self, rhs):
         return self.s == rhs.s
